@@ -17,3 +17,11 @@ class Test(unittest.TestCase):
     def test_conteudo(self):
         # verifica o retorno do conteudo da pagina
         self.assertEqual(self.result.data.decode('utf-8'), "Desafio Custom Message - ceps-repo")
+
+    def test_rota_teste(self):
+        # testa a rota /teste
+        result = self.app.get('/teste')
+        # verifica se a requisição foi bem sucedida
+        self.assertEqual(result.status_code, 200)
+        # verifica se a resposta contém "IP da máquina:"
+        self.assertIn("IP da máquina:", result.data.decode('utf-8'))
